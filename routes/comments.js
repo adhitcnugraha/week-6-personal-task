@@ -22,10 +22,9 @@ router.get("/comments/:postId", async (req, res) => {
 router.post("/comments/:postId", async (req, res) => {
   const { content } = req.body;
   const id = req.params.postId;
-  const postsId = Number(id);
 
   const commentsdata = await Comments.find().sort({ commentsId: -1 });
-  const post = await Posts.find({ postId: postsId });
+  const post = await Posts.find({ id });
   if (post.length) {
     if (content.trim() === "") {
       res.json({ Error: "The content is black" });
@@ -35,7 +34,7 @@ router.post("/comments/:postId", async (req, res) => {
         : 1;
       const createdComments = await Comments.create({
         commentsId: commentsId,
-        postId: postsId,
+        postId: id,
         content: content,
       });
       res.json({ comments: createdComments });

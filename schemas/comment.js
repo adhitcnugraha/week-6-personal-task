@@ -8,7 +8,7 @@ const commentSchema = new mongoose.Schema({
   },
   postId: {
     type: Number,
-    required: true,
+    required: false,
   },
   content: {
     type: String,
