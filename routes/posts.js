@@ -50,12 +50,12 @@ router.put("/post/:postId", async (req, res) => {
           },
         }
       );
-      res.json({ success: "Data has change" });
+      res.json({ success: "The data was changed" });
     } else {
-      res.json({ failed: "Password is Wrong" });
+      res.json({ failed: "The password is wrong" });
     }
   } else {
-    res.json({ failed: "Data not found" });
+    res.json({ failed: "The data was not found" });
   }
 });
 
@@ -66,12 +66,12 @@ router.delete("/post/:postId", async (req, res) => {
   if (existsPosts.length) {
     if (existsPosts[0].password === req.body.password) {
       await Posts.deleteOne({ postId: Number(postId) });
-      res.json({ success: "Data has delete" });
+      res.json({ success: "The data was deleted" });
     } else {
-      res.json({ failed: "Password is Wrong" });
+      res.json({ failed: "Wrong password!" });
     }
   } else {
-    res.json({ failed: "Data not found" });
+    res.json({ failed: "The data was not found" });
   }
 });
 

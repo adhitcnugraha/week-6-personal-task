@@ -13,5 +13,5 @@ app.use(express.json());
 app.use("/api", [postRouter, commentRouter]);
 
 app.listen(port, () => {
-  console.log(port, "Server is open with port!");
+  console.log(port, "node.js can be started");
 });

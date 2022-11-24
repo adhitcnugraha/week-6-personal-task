@@ -28,7 +28,7 @@ router.post("/comments/:postId", async (req, res) => {
   const post = await Posts.find({ postId: postsId });
   if (post.length) {
     if (content.trim() === "") {
-      res.json({ Error: "Content is black" });
+      res.json({ Error: "The content is black" });
     } else {
       const commentsId = commentsdata.length
         ? commentsdata[0].commentsId + 1
@@ -41,7 +41,7 @@ router.post("/comments/:postId", async (req, res) => {
       res.json({ comments: createdComments });
     }
   } else {
-    res.json({ Error: "Post ID Not Found" });
+    res.json({ Error: "Post ID did not Found" });
   }
 });
 
@@ -61,7 +61,7 @@ router.put("/comments/:commentsId", async (req, res) => {
       res.json({ Error: "Fill the input!" });
     }
   } else {
-    res.json({ Error: "Data not found" });
+    res.json({ Error: "The data is not found" });
   }
 });
 
@@ -71,9 +71,9 @@ router.delete("/comments/:commentsId", async (req, res) => {
   const data = await Comments.find({ commentsId: Number(commentsId) });
   if (data.length) {
     await Comments.deleteOne({ commentsId: Number(commentsId) });
-    res.json({ Message: "Success" });
+    res.json({ Message: "Delete successfully" });
   } else {
-    res.json({ Error: "Data not found" });
+    res.json({ Error: "The data is not found" });
   }
 });
 

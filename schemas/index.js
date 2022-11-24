@@ -7,7 +7,7 @@ const connect = () => {
 };
 
 mongoose.connection.on("error", (err) => {
-  console.error("MongoDB connection error", err);
+  console.error("The MongoDB connection is error", err);
 });
 
 module.exports = connect;
